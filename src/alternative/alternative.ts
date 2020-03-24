@@ -56,7 +56,7 @@ export const cfaSignInGoogle = (): Observable<{userCredential: firebase.auth.Use
 			const credential = firebase.auth.GoogleAuthProvider.credential(result.idToken);
 
 			// web sign in
-			firebase.app().auth().signInWithCredential(credential)
+			firebase.app().auth().signInAndRetrieveDataWithCredential(credential)
 				.then((userCredential: firebase.auth.UserCredential) => {
 					observer.next({userCredential, result});
 					observer.complete();
